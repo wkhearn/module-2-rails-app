@@ -1,8 +1,16 @@
 class ReviewsController < ApplicationController
   before_action :authenticated
 
+  def index
+    @reviews = Review.all
+  end
+
   def new
     @review = Review.new
+  end
+
+  def show
+    @review = Review.find(params[:id])
   end
 
   def create

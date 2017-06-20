@@ -1,0 +1,8 @@
+<%= form_for @user do |f| %>
+  <h5>Name: </h5><%= f.text_field :name %><br>
+  <h5>Username: </h5> <%= f.text_field :username %><br>
+  <h5>Password: </h5> <%= f.password_field :password%><br><br>
+  <%= f.submit %><br>
+<% end %>
+<br>
+<%= link_to "Back" , root_path %>

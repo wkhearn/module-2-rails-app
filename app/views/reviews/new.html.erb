@@ -2,7 +2,7 @@
 
 <%= form_for @review do |f| %>
 <%= f.label :restaurant_name, "Restaurant Name" %><br>
-<%= f.collection_select(:restaurant_id, Restaurant.all, :id, :name, :include_blank => true) %><br>
+<%= f.collection_select(:restaurant_id, Restaurant.order('name'), :id, :name, :include_blank => true) %><br>
 
 <%= link_to "Add New Restaurant", new_restaurant_path %><br>
 

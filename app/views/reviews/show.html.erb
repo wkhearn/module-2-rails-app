@@ -1,0 +1,6 @@
+<h1><%= "#{@review.user.name}'s Review of #{@review.restaurant.name}" %></h1>
+
+<p>Date: <%= @review.created_at.strftime("%B %d, %Y") %></p>
+<p>Wait Time: <%= "#{@review.wait} minutes" %></p>
+<p>Rating: <%= "#{@review.rating} stars" %></p>
+<p>Content: <%= "#{@review.content}" %></p>
