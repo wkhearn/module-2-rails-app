@@ -1,0 +1,17 @@
+<h1>Edit user</h1>
+
+<%= form_for @user do |f| %>
+  <h5>Name: </h5><%= f.text_field :name %><br>
+  <h5>Height: </h5><%= f.number_field :height %><br>
+  <h5>How happy are you? (1-5 scale)</h5><%= f.number_field :happiness %><br>
+  <h5>How nauseous are you? (1-5 scale)</h5><%= f.number_field :nausea %><br>
+  <h5>How many dollars are in your pocket?</h5><%= f.number_field :tickets %><br>
+  <h5>Check box if you are a theme park owner</h5><%= f.check_box :admin %><br>
+  <h5>Password: </h5> <%= f.password_field :password%><br>
+  <!-- <h5>Please confirm your password: </h5> <%= f.password_field :password_confirmation %><br> -->
+
+
+  <%= f.submit "Create User" %><br>
+<% end %>
+
+<%= link_to "Back" , root_path %>

@@ -1,0 +1,12 @@
+<h1>New user</h1>
+
+<%= form_for @user do |f| %>
+  <h5>Name: </h5><%= f.text_field :name %><br>
+  <h5>Username: </h5> <%= f.text_field :username %><br>
+  <h5>Password: </h5> <%= f.password_field :password%><br>
+
+
+  <%= f.submit "Create User" %><br>
+<% end %>
+
+<%= link_to "Back" , root_path %>
