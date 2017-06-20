@@ -1,0 +1,21 @@
+<h1>New Review</h1>
+
+<%= form_for @review do |f| %>
+<%= f.label :restaurant_name, "Restaurant Name" %><br>
+<%= f.collection_select(:restaurant_id, Restaurant.all, :id, :name, :include_blank => true) %><br>
+
+<%= link_to "Add New Restaurant", new_restaurant_path %><br>
+
+<%= f.label :wait_time, "How long did you wait?" %><br>
+<%= f.select(:wait, (1..30), :include_blank => true) %><br>
+
+<%= f.label :rating, "How much do you like it (1-5)" %><br>
+<%= f.select(:wait, (1..5)) %><br>
+
+<%= f.label :content, "Anything else?" %><br>
+<%= f.text_area(:content, size: "20x10") %><br>
+
+<%= f.submit "Submit" %><br>
+<% end %>
+
+<%= link_to "Back" , root_path %>

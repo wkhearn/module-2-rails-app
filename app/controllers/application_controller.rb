@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def authenticated
     if logged_in?
     else
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 end
