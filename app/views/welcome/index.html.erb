@@ -1,1 +1,37 @@
 <h1> FLATIRON EATS </h1>
+<br>
+<br>
+
+<h2>Top Restaurants Near Flatiron</h2>
+<ul>
+  <% Restaurant.top_5_restaurants.each do |restaurant| %>
+  <li><%= link_to "#{restaurant.name} - #{restaurant.average_rating}", restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
+<br>
+<br>
+
+<h2>Most Popular Restaurants Near Flatiron</h2>
+<ul>
+  <% Restaurant.most_popular_restaurants.each do |restaurant| %>
+  <li><%= link_to "#{restaurant.name} - #{restaurant.reviews.length} reviews: average rating of #{restaurant.average_rating} stars", restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
+<br>
+<br>
+
+<h2>Shortest Average Wait Times</h2>
+<ul>
+  <% Restaurant.shortest_wait_times.each do |restaurant| %>
+  <li><%= link_to "#{restaurant.name} - #{restaurant.average_wait} minutes", restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
+<br>
+<br>
+
+<h2>Longest Average Wait Times</h2>
+<ul>
+  <% Restaurant.longest_wait_times.each do |restaurant| %>
+  <li><%= link_to "#{restaurant.name} - #{restaurant.average_wait} minutes", restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
