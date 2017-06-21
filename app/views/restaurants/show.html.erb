@@ -3,6 +3,12 @@
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.restaurant_type %></p>
 <p><%= @restaurant.cuisine %></p><br>
+<p><%= image_tag @restaurant.image.url(:large) %></p><br>
+
+
+
+<%= image_tag @restaurant.static_map_for %>
+
 
 
 
@@ -15,4 +21,6 @@ AVERAGE RATING <br><br>
 
 TOP EATER? <br>
 
-<%= link_to("Have you eaten here? Write a review!", new_review_path) %>
+<%= link_to("Have you eaten here? Write a review!", new_review_path) %><br>
+
+<%= link_to("Edit", edit_restaurant_path(@restaurant)) %>
