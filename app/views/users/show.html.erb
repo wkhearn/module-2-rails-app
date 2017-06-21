@@ -24,7 +24,7 @@ ________________________________________________________________________________
 <br><br>
 <% @user_reviews.each do |rev| %>
 <p> Restaurant Name: <%= rev.restaurant.name %> <br>
- Date Reviewed: <%= rev.created_at %> <br>
+ Date Reviewed: <%= rev.created_at.strftime("%B %d, %Y") %> <br>
  Rating: <%= rev.rating %> stars <br>
  Wait time: <%= rev.wait %> minutes <br>
  Comments: <%= rev.content %> </p>

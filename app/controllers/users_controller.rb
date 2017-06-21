@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_reviews = Review.where("user_id = ?", params[:id]).order(created_at: :desc).limit(3)
     @user_restaurants = Review.where("user_id = ?", params[:id]).group(:restaurant_id)
-
   end
 
   def new
