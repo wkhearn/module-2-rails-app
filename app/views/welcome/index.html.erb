@@ -46,3 +46,27 @@
 
 <h2>REVIEWS</h2>
 <h3>Most Recent Reviews</h3>
+
+<h2>USERS</h2>
+<br>
+<h3>Most Active Reviewers</h3>
+<ul>
+  <% User.most_active.each do |user| %>
+  <li><%= link_to "#{user.name} - #{user.reviews.length} reviews", user_path(user) %></li>
+  <% end %>
+</ul>
+<br>
+<h3>Happiest Reviewers</h3>
+<ul>
+  <% User.happiest_reviewer.each do |user| %>
+  <li><%= link_to "#{user.name} - #{user.average_rating} stars", user_path(user) %></li>
+  <% end %>
+</ul>
+<br>
+<h3>Food Snob Leaderboard</h3>
+<ul>
+  <% User.snobiest_reviewer.each do |user| %>
+  <li><%= link_to "#{user.name} - #{user.average_rating} stars", user_path(user) %></li>
+  <% end %>
+</ul>
+<br>

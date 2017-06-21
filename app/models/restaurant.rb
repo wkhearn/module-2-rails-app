@@ -28,7 +28,7 @@ class Restaurant < ApplicationRecord
    query_string =  params.map{|k,v| "#{k}=#{v}"}.join("&")
    image_tag = "http://maps.googleapis.com/maps/api/staticmap?#{query_string}"
  end
-  
+
   def self.top_5_restaurants #used on class "Restaurant.top_restaurants" to generate list
     joins(:reviews).group('restaurants.id').order('AVG(rating) DESC').limit(5)
   end
@@ -47,7 +47,7 @@ class Restaurant < ApplicationRecord
   end
 
   def self.most_reviewed_restaurants #used on a class to generate list
-    most_reviews = joins(:reviews).group('restaurants.id').order('count_id DESC').limit(5).count(:id).collect {|k,v| Restaurant.find(k)}
+    joins(:reviews).group('restaurants.id').order('count_id DESC').limit(5).count(:id).collect {|k,v| Restaurant.find(k)}
   end
 
   def self.shortest_wait_times
