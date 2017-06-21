@@ -17,3 +17,6 @@ Restaurant.create(name: "Potbelly", address: "989 Test Street", restaurant_type:
 Review.create(restaurant_id: 1, user_id: 1, wait: 5, rating: 5, content: "Chipotle is very delicious and I enjoy it very much.")
 Review.create(restaurant_id: 2, user_id: 2, wait: 1, rating: 1, content: "There was no line because everyone else knows this place sucks.")
 Review.create(restaurant_id: 3, user_id: 3, wait: 8, rating: 5, content: "Who would eat Subway when you got Potbelly? Get the soup!")
+
+Cohort.create(name: "042417")
+Cohort.create(name: "051517")

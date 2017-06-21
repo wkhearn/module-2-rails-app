@@ -1,5 +1,27 @@
-<h1>Hello, <%= @user.name.titleize %>!</h1>
+<h1> Hello, <%= @user.name.titleize %>!</h1><br>
+
+<h5> Name: <%= @user.name.titleize %></h5>
+<h5> Username: <%= @user.username %></h5>
+
+
+
+<% if @user.instructor == true  %>
+  <h5> Role: Instructor</h5>
+<% elsif @user.instructor == false %>
+  <h5> Role: Student </h5>
+<% end  %>
+
+
+<% if @user.cohort != nil && @user.instructor == false %>
+  <h5> Cohort: <%= @user.cohort.name %></h5>
+<% elsif @user.instructor == false %>
+  <h5> Cohort: Unassigned </h5>
+<% end  %>
+
 
 <h4>Recent Reviews: </h4>
 <h4>Favorite Restaurants: </h4><br><br>
+
 <p><%= link_to("Edit Profile", edit_user_path) %></p>
+
+<%= link_to "Dashboard" , root_path %>
