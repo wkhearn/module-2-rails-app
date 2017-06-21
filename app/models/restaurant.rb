@@ -19,9 +19,8 @@ class Restaurant < ApplicationRecord
     sprintf "%.2f", self.reviews.average(:rating).to_f
   end
 
-  def self.most_popular_restaurants #used on a class to generate list
-    popular = joins(:reviews).group('restaurants.id').order('count_id DESC').limit(5).count(:id)
-    popular_objects = popular.collect {|k,v| Restaurant.find(k)}
+  def self.most_reviewed_restaurants #used on a class to generate list
+    most_reviews = joins(:reviews).group('restaurants.id').order('count_id DESC').limit(5).count(:id).collect {|k,v| Restaurant.find(k)}
   end
 
   def self.shortest_wait_times
@@ -34,5 +33,9 @@ class Restaurant < ApplicationRecord
 
   def average_wait
     sprintf "%.0f", self.reviews.average(:wait).to_f
+  end
+
+  def self.walk_time_high_rating
+    # joins(:reviews).group('restaurants.id').where('rating >= 4').where('wait <= 10').where("cuisine == 'American'").where('walk >= 15')
   end
 end

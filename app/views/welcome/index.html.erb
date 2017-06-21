@@ -2,36 +2,47 @@
 <br>
 <br>
 
-<h2>Top Restaurants Near Flatiron</h2>
+
+<h2>RESTAURANTS</h2>
+<h3>Top Restaurants Near Flatiron</h3>
 <ul>
   <% Restaurant.top_5_restaurants.each do |restaurant| %>
   <li><%= link_to "#{restaurant.name} - #{restaurant.average_rating}", restaurant_path(restaurant) %></li>
   <% end %>
 </ul>
 <br>
-<br>
 
-<h2>Most Popular Restaurants Near Flatiron</h2>
+<h3>Most Reviewed Restaurants Near Flatiron</h3>
 <ul>
-  <% Restaurant.most_popular_restaurants.each do |restaurant| %>
+  <% Restaurant.most_reviewed_restaurants.each do |restaurant| %>
   <li><%= link_to "#{restaurant.name} - #{restaurant.reviews.length} reviews: average rating of #{restaurant.average_rating} stars", restaurant_path(restaurant) %></li>
   <% end %>
 </ul>
 <br>
-<br>
 
-<h2>Shortest Average Wait Times</h2>
+<h3>Shortest Average Wait Times</h3>
 <ul>
   <% Restaurant.shortest_wait_times.each do |restaurant| %>
   <li><%= link_to "#{restaurant.name} - #{restaurant.average_wait} minutes", restaurant_path(restaurant) %></li>
   <% end %>
 </ul>
 <br>
-<br>
 
-<h2>Longest Average Wait Times</h2>
+<h3>Longest Average Wait Times</h3>
 <ul>
   <% Restaurant.longest_wait_times.each do |restaurant| %>
   <li><%= link_to "#{restaurant.name} - #{restaurant.average_wait} minutes", restaurant_path(restaurant) %></li>
   <% end %>
 </ul>
+<br>
+
+<h3>Furthest Walk (But Totally Worth It)</h3>
+<h4>TODO: Work on walk time feature</h4>
+<ul>
+  <% Restaurant.longest_wait_times.each do |restaurant| %>
+  <li><%= link_to "#{restaurant.name} - Total average roundtrip (including wait time) #{restaurant.average_wait} minutes", restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
+
+<h2>REVIEWS</h2>
+<h3>Most Recent Reviews</h3>
