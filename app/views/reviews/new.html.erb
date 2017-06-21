@@ -10,7 +10,7 @@
 <%= f.select(:wait, (1..30), :include_blank => true) %><br>
 
 <%= f.label :rating, "How much do you like it (1-5)" %><br>
-<%= f.select(:wait, (1..5)) %><br>
+<%= f.select(:rating, (1..5)) %><br>
 
 <%= f.label :content, "Anything else?" %><br>
 <%= f.text_area(:content, size: "20x10") %><br>

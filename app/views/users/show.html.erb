@@ -18,9 +18,32 @@
   <h5> Cohort: Unassigned </h5>
 <% end  %>
 
+<br>
+<h2>Recent Reviews: </h2>
+________________________________________________________________________________
+<br><br>
+<% @user_reviews.each do |rev| %>
+<p> Restaurant Name: <%= rev.restaurant.name %> <br>
+ Date Reviewed: <%= rev.created_at %> <br>
+ Rating: <%= rev.rating %> stars <br>
+ Wait time: <%= rev.wait %> minutes <br>
+ Comments: <%= rev.content %> </p>
+________________________________________________________________________________
+<br><br>
+<% end  %>
 
-<h4>Recent Reviews: </h4>
-<h4>Favorite Restaurants: </h4><br><br>
+<br>
+<h2>Your Restaurants: </h2>
+________________________________________________________________________________
+<br><br>
+<% @user_restaurants.each do |rest| %>
+
+<p> Restaurant Name: <%= rest.restaurant.name %> <br>
+<%=  @user.reviews.where("restaurant_id = ?", rest.restaurant.id).average(:rating).to_f %></p>
+________________________________________________________________________________
+<br><br>
+<% end  %>
+<br><br>
 
 <p><%= link_to("Edit Profile", edit_user_path) %></p>
 
