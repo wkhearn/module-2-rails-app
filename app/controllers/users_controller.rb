@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_reviews = Review.where("user_id = ?", params[:id]).order(created_at: :desc).limit(3)
+    @user_restaurants = Review.where("user_id = ?", params[:id]).group(:restaurant_id)
+
   end
 
   def new
@@ -36,7 +39,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :password, :instructor)
+    params.require(:user).permit(:name, :username, :password, :instructor, :cohort_id)
   end
 
 end

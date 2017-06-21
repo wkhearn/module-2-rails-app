@@ -1,7 +1,6 @@
 class Restaurant < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
-
   has_attached_file :image, styles: { large: "500x500>", medium: "300x300>", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
@@ -66,5 +65,6 @@ class Restaurant < ApplicationRecord
   def self.walk_time_high_rating
     # joins(:reviews).group('restaurants.id').where('rating >= 4').where('wait <= 10').where("cuisine == 'American'").where('walk >= 15')
   end
+
 
 end
