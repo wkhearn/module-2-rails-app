@@ -1,0 +1,19 @@
+<%= form_for @restaurant, html: { multipart: true } do |f| %>
+<%= f.label :name, "Restaurant Name" %><br>
+<%= f.text_field :name %><br>
+
+<%= f.label :address, "Address" %><br>
+<%= f.text_field :address %><br>
+
+<%= f.label :restaurant_type, "Restaurant Type" %><br>
+<%= f.select(:restaurant_type, ["Food Cart", "Fast Food", "Fast Casual", "Sit Down"], :include_blank => true) %><br>
+
+<%= f.label :cuisine, "Cuisine" %><br>
+<%= f.select(:cuisine, ["American", "Mexican", "Sandwiches", "Chinese"], :include_blank => true) %><br>
+
+<%= f.label :image, "Upload an image:" %><br>
+<%= f.file_field :image %><br>
+
+
+<%= f.submit %><br>
+<% end %>
