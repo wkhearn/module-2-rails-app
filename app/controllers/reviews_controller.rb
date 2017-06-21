@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticated
+
 
   def index
     @reviews = Review.all
