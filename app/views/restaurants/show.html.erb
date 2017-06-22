@@ -1,6 +1,5 @@
 <h1><%= @restaurant.name %></h1>
 
-<p><%= @restaurant.address %></p>
 <p><%= @restaurant.restaurant_type %></p>
 <p><%= @restaurant.cuisine %></p><br>
 <p><%= image_tag @restaurant.image.url(:large) %></p><br>
@@ -10,7 +9,7 @@
 <%= image_tag @restaurant.static_map_for %>
 <br>
 <br>
-Address: <%= @restaurant.hash_address %><br>
+Address: <%= @restaurant.address %><br>
 Distance Away: <%= @restaurant.miles %><br>
 Travel Time: <%= @restaurant.minutes %> Minutes<br>
 
