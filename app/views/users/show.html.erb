@@ -45,6 +45,17 @@ ________________________________________________________________________________
 <% end  %>
 <br><br>
 
+<br>
+<h2>Your Experiences: </h2>
+________________________________________________________________________________
+<br><br>
+<% @user_experiences.each do |exp| %>
+<p> Experience Destination: <%= exp.experience.restaurant.name %> <br>
+ Date of Experience: <%= exp.experience.date.strftime("%B %d, %Y") %> <br>
+________________________________________________________________________________
+<br><br>
+<% end  %>
+
 <p><%= link_to("Edit Profile", edit_user_path) %></p>
 
 <%= link_to "Dashboard" , root_path %>

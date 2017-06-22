@@ -1,0 +1,11 @@
+<%= form_for @experience do |f| %>
+<%= f.label :restaurant_id, "Experience Location" %><br>
+<%= f.collection_select(:restaurant_id, Restaurant.order('name'), :id, :name, :include_blank => true) %><br>
+
+<%= link_to "Add New Restaurant", new_restaurant_path %><br>
+
+<%= f.label :date, "Date" %><br>
+<%= f.date_field :date %><br>
+
+<%= f.submit %><br>
+<% end %>
