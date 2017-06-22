@@ -1,7 +1,27 @@
 <br>
 <br>
 
+<h2>EXPERIENCES</h2>
+<h3>Upcoming Flatiron Experiences</h3>
+<div class="">
+  <div class="row">
+    <% Experience.upcoming.each do |experience| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= link_to(image_tag(experience.restaurant.image.url(:large)), experience_path(experience)) %>
+        <div class="caption">
+          <h4><%= "Come to #{experience.restaurant.name} on #{experience.date.strftime("%B %d, %Y")}" %></h4>
+          <p>Going: <%= experience.users.length %></p>
+          <p><a href="<%= new_experience_signup_path %>" class="btn btn-default" role="button">Go Eat!</a></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
 
+<br>
 <h2>RESTAURANTS</h2>
 <h3>Top Restaurants Near Flatiron</h3>
 <div class="">
