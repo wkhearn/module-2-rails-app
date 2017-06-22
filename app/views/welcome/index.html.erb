@@ -43,9 +43,6 @@
   <% end %>
 </ul>
 
-<h2>REVIEWS</h2>
-<h3>Most Recent Reviews</h3>
-
 <h2>USERS</h2>
 <br>
 <h3>Most Active Reviewers</h3>
@@ -70,6 +67,11 @@
 </ul>
 <br>
 
+
+
+<h2>REVIEWS</h2>
+<h3>Most Recent Reviews</h3>
+
 <% Review.most_recent_reviews.each do |rev| %>
 <ul>
 <li> <%= link_to "#{rev.user.name}", user_path(rev.user) %> reviewed <%= link_to "#{rev.restaurant.name}", restaurant_path(rev.restaurant) %>!</li>
@@ -79,4 +81,3 @@
 <li><%= link_to "Comments: #{rev.content}", review_path(rev) %> </li>
 </ul></ul>
 <% end %>
-
