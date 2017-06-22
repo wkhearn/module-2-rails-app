@@ -1,0 +1,12 @@
+<h1>Experience Signup</h1>
+
+<%= form_for @experience_signup do |f| %>
+<%= f.label :experience_id, "Experience" %><br>
+<%= f.collection_select(:experience_id, Experience.all, :id, :exp_dropdown, :include_blank => true) %><br>
+
+<%= link_to "Add New Experience", new_experience_path %><br>
+
+<%= f.submit "Signup" %><br>
+<% end %>
+
+<%= link_to "Back" , root_path %>

@@ -1,0 +1,7 @@
+<h1>Experience Signups!!!</h1>
+
+<% @experience_signups.each do |exp| %>
+<ul>
+  <li><%= "#{exp.experience.date.strftime("%B %d, %Y")} - #{exp.experience.restaurant.name} - #{exp.user.name}"  %></li>
+</ul>
+<% end %>

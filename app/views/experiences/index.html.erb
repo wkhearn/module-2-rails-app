@@ -1,0 +1,9 @@
+<h1>All Experiences!!!</h1>
+
+
+<% @experiences.each do |exp| %>
+<ul>
+  <li><%= link_to "#{exp.restaurant.name} - #{exp.date.strftime("%B %d, %Y")}", experience_path(exp)  %></li>
+
+</ul>
+<% end %>

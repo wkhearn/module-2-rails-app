@@ -10,9 +10,9 @@ User.create(name: "Ed Sheeran", username: "eddie", password: "password")
 User.create(name: "Kenny G", username: "kennyg", password: "password")
 User.create(name: "Lebron James", username: "lebron", password: "password")
 
-Restaurant.create(name: "Chipotle", address: "123 Test Street", restaurant_type: "Fast Casual", cuisine: "Mexican")
-Restaurant.create(name: "Subway", address: "456 Test Street", restaurant_type: "Fast Food", cuisine: "Sandwich")
-Restaurant.create(name: "Potbelly", address: "989 Test Street", restaurant_type: "Fast Casual", cuisine: "Gourmet Sandwich")
+chipotle = Restaurant.create(name: "Chipotle", address: "123 Test Street", restaurant_type: "Fast Casual", cuisine: "Mexican")
+subway = Restaurant.create(name: "Subway", address: "456 Test Street", restaurant_type: "Fast Food", cuisine: "Sandwich")
+potbelly = Restaurant.create(name: "Potbelly", address: "989 Test Street", restaurant_type: "Fast Casual", cuisine: "Gourmet Sandwich")
 
 Review.create(restaurant_id: 1, user_id: 1, wait: 5, rating: 5, content: "Chipotle is very delicious and I enjoy it very much.")
 Review.create(restaurant_id: 2, user_id: 2, wait: 1, rating: 1, content: "There was no line because everyone else knows this place sucks.")
@@ -24,8 +24,9 @@ Review.create(restaurant_id: 2, user_id: 2, wait: 10, rating: 4, content: "stuff
 Review.create(restaurant_id: 3, user_id: 2, wait: 3, rating: 1, content: "Ehh!")
 Review.create(restaurant_id: 3, user_id: 2, wait: 4, rating: 2, content: "It was a little better this time. ")
 
-
-
-
 Cohort.create(name: "042417")
 Cohort.create(name: "051517")
+
+Experience.create(restaurant: chipotle, date: "2017-06-23T012:00:00-0600")
+Experience.create(restaurant: subway, date: "2017-06-26T012:00:00-0600")
+Experience.create(restaurant: potbelly, date: "2017-06-26T012:00:00-0600")
