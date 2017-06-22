@@ -82,7 +82,7 @@ class Restaurant < ApplicationRecord
   end
 
   def self.most_reviewed_restaurants #used on a class to generate list
-    most_reviews = joins(:reviews).group('restaurants.id').order('count_id DESC').limit(5).count(:id).collect {|k,v| Restaurant.find(k)}
+    joins(:reviews).group('restaurants.id').order('count_id DESC').limit(5).count(:id).collect {|k,v| Restaurant.find(k)}
   end
 
   def self.shortest_wait_times
