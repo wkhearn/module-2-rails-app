@@ -10,12 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621193732) do
+ActiveRecord::Schema.define(version: 20170622183801) do
 
   create_table "cohorts", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "experience_signups", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "experience_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["experience_id"], name: "index_experience_signups_on_experience_id"
+    t.index ["user_id"], name: "index_experience_signups_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.integer "restaurant_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_experiences_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
