@@ -1,3 +1,6 @@
+# require 'rest-client'
+# require 'json'
+
 class Restaurant < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
@@ -28,7 +31,39 @@ class Restaurant < ApplicationRecord
    query_string =  params.map{|k,v| "#{k}=#{v}"}.join("&")
    image_tag = "http://maps.googleapis.com/maps/api/staticmap?#{query_string}"
  end
-  
+
+ def walking_instructions
+   params = {
+     :origin => [40.7052799, -74.0140249].join(","),
+     :destination => [self.latitude, self.longitude].join(","),
+     :mode => "walking"
+    }
+     query_string =  params.map{|k,v| "#{k}=#{v}"}.join("&")
+     image_tag = "http://maps.googleapis.com/maps/api/directions/json?#{query_string}"
+ end
+
+ def access_hash
+   gmaps_hash = RestClient.get(walking_instructions)
+   map_instructions = JSON.parse(gmaps_hash)
+ end
+
+ def miles
+   access_hash["routes"][0]["legs"][0]["distance"]["text"]
+ end
+
+ def minutes
+    array = access_hash["routes"][0]["legs"][0]["duration"]["text"].split(' ')
+    array[0].to_i
+ end
+
+ def hash_address
+    access_hash["routes"][0]["legs"][0]["end_address"]
+  end
+
+  def total_wait
+    minutes + self.average_wait.to_i
+  end
+
   def self.top_5_restaurants #used on class "Restaurant.top_restaurants" to generate list
     joins(:reviews).group('restaurants.id').order('AVG(rating) DESC').limit(5)
   end
