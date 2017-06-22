@@ -6,7 +6,7 @@
 <div class="">
   <div class="row">
     <% Experience.upcoming.each do |experience| %>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
         <%= link_to(image_tag(experience.restaurant.image.url(:large)), experience_path(experience)) %>
         <div class="caption">
@@ -25,8 +25,8 @@
 <h4>Top Restaurants Near Flatiron</h4>
 <div class="">
   <div class="row">
-    <% Restaurant.top_5_restaurants.each do |restaurant| %>
-    <div class="col-sm-6 col-md-4">
+    <% Restaurant.top_restaurants.each do |restaurant| %>
+    <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
         <%= link_to(image_tag(restaurant.image.url(:large)), restaurant_path(restaurant)) %>
         <div class="caption">

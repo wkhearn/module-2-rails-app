@@ -65,8 +65,8 @@ class Restaurant < ApplicationRecord
     minutes + self.average_wait.to_i
   end
 
-  def self.top_5_restaurants #used on class "Restaurant.top_restaurants" to generate list
-    joins(:reviews).group('restaurants.id').order('AVG(rating) DESC').limit(5)
+  def self.top_restaurants #used on class "Restaurant.top_restaurants" to generate list
+    joins(:reviews).group('restaurants.id').order('AVG(rating) DESC').limit(4)
   end
 
   # sql = <<-SQL
@@ -83,15 +83,15 @@ class Restaurant < ApplicationRecord
   end
 
   def self.most_reviewed_restaurants #used on a class to generate list
-    joins(:reviews).group('restaurants.id').order('count_id DESC').limit(5).count(:id).collect {|k,v| Restaurant.find(k)}
+    joins(:reviews).group('restaurants.id').order('count_id DESC').limit(4).count(:id).collect {|k,v| Restaurant.find(k)}
   end
 
   def self.shortest_wait_times
-    joins(:reviews).group('restaurants.id').order('AVG(wait)').limit(5)
+    joins(:reviews).group('restaurants.id').order('AVG(wait)').limit(4)
   end
 
   def self.longest_wait_times
-    joins(:reviews).group('restaurants.id').order('AVG(wait) DESC').limit(5)
+    joins(:reviews).group('restaurants.id').order('AVG(wait) DESC').limit(4)
   end
 
   def average_wait
