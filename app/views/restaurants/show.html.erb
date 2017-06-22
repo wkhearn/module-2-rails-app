@@ -8,16 +8,17 @@
 
 
 <%= image_tag @restaurant.static_map_for %>
+<br>
+<br>
+Address: <%= @restaurant.hash_address %><br>
+Distance Away: <%= @restaurant.miles %><br>
+Travel Time: <%= @restaurant.minutes %> Minutes<br>
 
+Combined travel and wait time: <%= @restaurant.total_wait %> Minutes<br>
 
+Average Rating <%= @restaurant.average_rating %> Stars <br>
+<br><br><br>
 
-
-GOOGLE MAPS SNIPPET <br>
-HOW LONG OF WALK <br>
-WAIT TIME <br><br>
-
-CALCULATED WALK + AVERAGE WAIT TIME <br>
-AVERAGE RATING <br><br>
 
 TOP EATER? <br>
 
