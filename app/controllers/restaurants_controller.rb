@@ -7,6 +7,8 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
+      @restaurant.address = @restaurant.hash_address 
+      @restaurant.save
       flash[:success] = "#{@restaurant.name} has been added!"
       redirect_to new_review_path
     else
