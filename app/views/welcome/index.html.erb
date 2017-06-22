@@ -4,11 +4,22 @@
 
 <h2>RESTAURANTS</h2>
 <h3>Top Restaurants Near Flatiron</h3>
-<ul>
-  <% Restaurant.top_5_restaurants.each do |restaurant| %>
-  <li><%= link_to "#{restaurant.name} - #{restaurant.average_rating}", restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
+<div class="">
+  <div class="row">
+    <% Restaurant.top_5_restaurants.each do |restaurant| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= link_to(image_tag(restaurant.image.url(:large)), restaurant_path(restaurant)) %>
+        <div class="caption">
+          <h3><%= "#{restaurant.name} - #{restaurant.average_rating} avg rating" %></h3>
+          <p>Distance: <%= restaurant.miles %></p>
+          <p><a href="<%= new_review_path %>" class="btn btn-default" role="button">Review</a> <a href="<%= restaurant_path(restaurant) %>" class="btn btn-info" role="button">Go Eat!</a></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 <br>
 
 <h3>Most Reviewed Restaurants Near Flatiron</h3>
