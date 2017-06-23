@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_attached_file :profile_pic, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/profile_pics/missing.jpg"
+  validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\z/
+
 
   def user_recent_reviews
     self.reviews.where("user_id = ?", current_user).order(created_at: :desc).limit(3)

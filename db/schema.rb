@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622183801) do
+ActiveRecord::Schema.define(version: 20170623144901) do
 
   create_table "cohorts", force: :cascade do |t|
     t.string "name"
@@ -70,6 +70,10 @@ ActiveRecord::Schema.define(version: 20170622183801) do
     t.datetime "updated_at", null: false
     t.boolean "instructor", default: false
     t.integer "cohort_id"
+    t.string "profile_pic_file_name"
+    t.string "profile_pic_content_type"
+    t.integer "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
     t.index ["cohort_id"], name: "index_users_on_cohort_id"
   end
 
