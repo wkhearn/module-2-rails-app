@@ -1,4 +1,6 @@
 class ExperiencesController < ApplicationController
+  before_action :authenticated, :except => [:index, :show]
+
   def index
     @experiences = Experience.all
   end
@@ -12,7 +14,7 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @experience = Experience.new(experience_params) 
+    @experience = Experience.new(experience_params)
     if @experience.save
       redirect_to experience_path(@experience)
     else

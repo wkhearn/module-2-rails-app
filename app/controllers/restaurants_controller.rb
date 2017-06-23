@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :authenticated, :except => [:index, :show]
 
   def new
     @restaurant = Restaurant.new
@@ -12,6 +13,8 @@ class RestaurantsController < ApplicationController
       flash[:success] = "#{@restaurant.name} has been added! If you'd like to leave a review, click 'Create Review!'"
       redirect_to restaurants_path
     else
+      error = @restaurant.errors.full_messages
+      flash[:danger] = error
       render 'new'
     end
   end

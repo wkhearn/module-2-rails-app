@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+  before_action :authenticated, :except => [:index, :show]
 
   def index
     @reviews = Review.all
@@ -21,6 +21,8 @@ class ReviewsController < ApplicationController
       flash[:success] = "Thanks for adding a review for #{@review.restaurant.name}"
       redirect_to restaurant_path(@review.restaurant)
     else
+      error = @review.errors.full_messages
+      flash[:danger] = error
       render 'new'
     end
   end

@@ -8,6 +8,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      error = @user.errors.full_messages
+      flash[:danger] = error
       redirect_to signup_path
     end
   end

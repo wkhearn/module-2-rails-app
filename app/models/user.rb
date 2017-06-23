@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_attached_file :profile_pic, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/assets/:style/missing_profile.jpg"
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\z/
+  validates :username, presence: true, uniqueness: true
 
 
   def user_recent_reviews

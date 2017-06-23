@@ -7,6 +7,7 @@ class Restaurant < ApplicationRecord
 
   geocoded_by :search_address
   after_validation :geocode
+  validates :name, presence: true
 
   def search_address
     search_string = ""
