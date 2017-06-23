@@ -1,6 +1,3 @@
-# require 'rest-client'
-# require 'json'
-
 class Restaurant < ApplicationRecord
   has_many :reviews
   has_many :experiences
@@ -61,24 +58,15 @@ class Restaurant < ApplicationRecord
     access_hash["routes"][0]["legs"][0]["end_address"]
   end
 
-  def total_wait
-    minutes + self.average_wait.to_i
+  def total_turnaround
+    minutes * 2 + self.average_wait.to_i
   end
 
   def self.top_restaurants #used on class "Restaurant.top_restaurants" to generate list
     joins(:reviews).group('restaurants.id').order('AVG(rating) DESC').limit(4)
   end
 
-  # sql = <<-SQL
-  # SELECT * FROM restaurants
-  # JOIN reviews
-  # ON reviews.restaurant_id = restaurants.id
-  # GROUP BY restaurants.id
-  # ORDER BY 'AVG(reviews.rating) DESC'
-  # SQL
-
   def average_rating #used on a specific restaurant "Restaurant.first.average_rating"
-    # reviews.average(:rating).to_f.round(2)
     sprintf "%.2f", self.reviews.average(:rating).to_f
   end
 
@@ -88,6 +76,10 @@ class Restaurant < ApplicationRecord
 
   def self.shortest_wait_times
     joins(:reviews).group('restaurants.id').order('AVG(wait)').limit(4)
+  end
+
+  def self.shortest_turnaround_times
+    Restaurant.all.to_a.sort! { |a, b|  a.total_turnaround <=> b.total_turnaround }.slice(0..2)
   end
 
   def self.longest_wait_times
