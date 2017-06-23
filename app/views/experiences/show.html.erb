@@ -3,7 +3,8 @@
 <p><%= @experience.date %></p>
 
 
-<%= link_to("Signup!", new_experience_signup_path) %><br>
+
+<%= link_to("Signup!", experience_signups_path(experience_id: @experience.id), method: :post)%><br>
 
 <%= link_to("Did you attend? Write a review!", new_review_path) %><br>
 
