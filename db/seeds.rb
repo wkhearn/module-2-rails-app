@@ -10,9 +10,9 @@ User.create(name: "Ed Sheeran", username: "eddie", password: "password")
 User.create(name: "Kenny G", username: "kennyg", password: "password")
 User.create(name: "Lebron James", username: "lebron", password: "password")
 
-chipotle = Restaurant.create(name: "Chipotle", address: "123 Test Street", restaurant_type: "Fast Casual", cuisine: "Mexican")
-subway = Restaurant.create(name: "Subway", address: "456 Test Street", restaurant_type: "Fast Food", cuisine: "Sandwich")
-potbelly = Restaurant.create(name: "Potbelly", address: "989 Test Street", restaurant_type: "Fast Casual", cuisine: "Gourmet Sandwich")
+chipotle = Restaurant.create(name: "Chipotle", address: "2 Broadway", restaurant_type: "Fast Casual", cuisine: "Mexican")
+subway = Restaurant.create(name: "Subway", address: "11 Broadway", restaurant_type: "Fast Food", cuisine: "Sandwich")
+potbelly = Restaurant.create(name: "Potbelly", address: "90 Broad Street", restaurant_type: "Fast Casual", cuisine: "Gourmet Sandwich")
 
 Review.create(restaurant_id: 1, user_id: 1, wait: 5, rating: 5, content: "Chipotle is very delicious and I enjoy it very much.")
 Review.create(restaurant_id: 2, user_id: 2, wait: 1, rating: 1, content: "There was no line because everyone else knows this place sucks.")

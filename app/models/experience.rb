@@ -8,6 +8,6 @@ class Experience < ApplicationRecord
   end
 
   def self.upcoming
-    Experience.where('date > ?', Time.now).order('date').limit(3)
+    Experience.where('date > ?', Time.now).order('date').limit(4)
   end
 end

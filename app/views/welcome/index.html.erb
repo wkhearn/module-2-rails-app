@@ -42,37 +42,42 @@
 <br>
 
 <h4>Most Reviewed Restaurants Near Flatiron</h4>
-<ul>
-  <% Restaurant.most_reviewed_restaurants.each do |restaurant| %>
-  <li><%= link_to "#{restaurant.name} - #{restaurant.reviews.length} reviews: average rating of #{restaurant.average_rating} stars", restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
+<div class="">
+  <div class="row">
+    <% Restaurant.most_reviewed_restaurants.each do |restaurant| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to(image_tag(restaurant.image.url(:large)), restaurant_path(restaurant)) %>
+        <div class="caption">
+          <p><%= "#{restaurant.name} - #{restaurant.reviews.length} reviews" %></p>
+          <p><%= "Average rating of #{restaurant.average_rating} stars" %></p>
+          <p><a href="<%= new_review_path %>" class="btn btn-default" role="button">Review</a> <a href="<%= restaurant_path(restaurant) %>" class="btn btn-info" role="button">Go Eat!</a></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 <br>
 
-<h4>Shortest Average Wait Times</h4>
-<ul>
-  <% Restaurant.shortest_wait_times.each do |restaurant| %>
-  <li><%= link_to "#{restaurant.name} - #{restaurant.average_wait} minutes", restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
+<h4>Shortest Turnaround Times</h4>
+<div class="">
+  <div class="row">
+    <% Restaurant.shortest_turnaround_times.each do |restaurant| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to(image_tag(restaurant.image.url(:large)), restaurant_path(restaurant)) %>
+        <div class="caption">
+          <p><%= "#{restaurant.name} - #{restaurant.total_turnaround} minutes" %></p>
+          <p><a href="<%= new_review_path %>" class="btn btn-default" role="button">Review</a> <a href="<%= restaurant_path(restaurant) %>" class="btn btn-info" role="button">Go Eat!</a></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 <br>
 
-<h4>Longest Average Wait Times</h4>
-<ul>
-  <% Restaurant.longest_wait_times.each do |restaurant| %>
-  <li><%= link_to "#{restaurant.name} - #{restaurant.average_wait} minutes", restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
-<br>
-
-<h4>Furthest Walk (But Totally Worth It)</h4>
-<h4>TODO: Work on walk time feature</h4>
-<ul>
-  <% Restaurant.longest_wait_times.each do |restaurant| %>
-  <li><%= link_to "#{restaurant.name} - Total average roundtrip (including wait time) #{restaurant.average_wait} minutes", restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
-<br>
 <u><h3>Users</h3></u>
 <h4>Most Active Reviewers</h4>
 <ul>
