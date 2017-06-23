@@ -1,6 +1,6 @@
 <h1><%= @experience.restaurant.name %></h1>
 
-<p><%= @experience.date %></p>
+<p><%= @experience.date.strftime("%B %d, %Y") %></p>
 
 <%= link_to("Signup!", experience_signups_path(experience_id: @experience.id), method: :post)%><br>
 

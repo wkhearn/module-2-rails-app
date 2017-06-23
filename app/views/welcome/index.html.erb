@@ -12,7 +12,7 @@
         <div class="caption">
           <h4><%= "Come to #{experience.restaurant.name} on #{experience.date.strftime("%B %d, %Y")}" %></h4>
           <p>Going: <%= experience.users.length %></p>
-          <p><a href="<%= new_experience_signup_path %>" class="btn btn-info" role="button">Go Eat!</a></p>
+          <p><a href="<%= experience_signups_path(experience_id: experience.id) %>" data-method="post" class="btn btn-info" role="button">Sign Up!</a></p>
         </div>
       </div>
     </div>

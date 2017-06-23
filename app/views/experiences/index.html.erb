@@ -1,9 +1,19 @@
-<h1>All Experiences!!!</h1>
-
-
-<% @experiences.each do |exp| %>
-<ul>
-  <li><%= link_to "#{exp.restaurant.name} - #{exp.date.strftime("%B %d, %Y")}", experience_path(exp)  %></li>
-
-</ul>
+<h1>Experiences</h1>
+<a href="<%= new_experience_path %>" class="btn btn-info" role="button">Add New Experience</a>
+<br><br>
+<table class = "table table-hover">
+    <tr>
+      <th>Restaurant</th>
+      <th>Date</th>
+      <th>Number of Attendees</th>
+      <th>Expected Time Taken</th>
+    </tr>
+    <% @experiences.each do |exp| %>
+    <tr>
+      <td> <%= link_to "#{exp.restaurant.name}", experience_path(exp)  %> </td>
+      <td> <%= exp.date.strftime("%B %d, %Y") %> </td>
+      <td> <%= exp.users.length %> </td>
+      <td> <%= exp.restaurant.total_turnaround %> minutes </td>
+    </tr>
 <% end %>
+</table>

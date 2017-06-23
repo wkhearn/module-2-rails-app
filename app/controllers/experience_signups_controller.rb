@@ -17,9 +17,6 @@ class ExperienceSignupsController < ApplicationController
     if @experience_signup.save
       flash[:success] = "You have successfully signed up to go to #{@experience_signup.experience.restaurant.name}!"
       redirect_to user_path(@experience_signup.user)
-    else
-      flash[:danger] = "There was an error with your registration!"
-      render '../experience/show'
     end
   end
 
