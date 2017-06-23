@@ -1,9 +1,21 @@
-<h1>All Restaurants</h1>
+<h1>Restaurants</h1>
 
-
-<% @restaurants.each do |restaurant| %>
-<ul>
-  <li><%= link_to "#{restaurant.name} - #{restaurant.address}", restaurant_path(restaurant)  %></li>
-  <li> <%= image_tag restaurant.image.url(:thumb)  %> </li>
-</ul>
+<table class = "table table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Average Rating</th>
+      <th>Expected Time Taken</th>
+    </tr>
+    <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td> <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> </td>
+      <td> <%= restaurant.address %> </td>
+      <td> <%= restaurant.average_rating %> </td>
+      <td> <%= restaurant.total_wait %> minutes </td>
+    </tr>
 <% end %>
+</table>
+
+<br>
+<br>

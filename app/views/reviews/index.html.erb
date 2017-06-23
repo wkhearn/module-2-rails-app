@@ -1,7 +1,21 @@
-<h1>Reviews!!!</h1>
+<h1>Reviews</h1>
 
-<% @reviews.each do |review| %>
-<ul>
-  <li><%= link_to "#{review.created_at.strftime("%B %d, %Y")} - #{review.restaurant.name} - #{review.user.name}", review_path(review)  %></li>
-</ul>
+<table class = "table table-condensed table-hover">
+    <tr>
+      <th>Restaurant</th>
+      <th>When</th>
+      <th>Who</th>
+      <th>Rating</th>
+    </tr>
+    <% @reviews.each do |review| %>
+    <tr>
+      <td> <%= link_to "#{review.restaurant.name}", review_path(review) %> </td>
+      <td> <%= link_to "#{review.created_at.strftime("%B %d, %Y")}" %> </td>
+      <td> <%= review.user.name %> </td>
+      <td> <%= review.rating %> </td>
+    </tr>
 <% end %>
+</table>
+
+<br>
+<br>
