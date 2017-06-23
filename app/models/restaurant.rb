@@ -23,7 +23,8 @@ class Restaurant < ApplicationRecord
      :zoom => 17,
      :size => "500x500",
      :markers => [self.latitude, self.longitude].join(","),
-     :sensor => true
+     :sensor => true,
+     :key => Rails.application.secrets.API_key
      }
 
    query_string =  params.map{|k,v| "#{k}=#{v}"}.join("&")
@@ -34,10 +35,11 @@ class Restaurant < ApplicationRecord
    params = {
      :origin => [40.7052799, -74.0140249].join(","),
      :destination => [self.latitude, self.longitude].join(","),
-     :mode => "walking"
+     :mode => "walking",
+     :key => Rails.application.secrets.API_key
     }
      query_string =  params.map{|k,v| "#{k}=#{v}"}.join("&")
-     image_tag = "http://maps.googleapis.com/maps/api/directions/json?#{query_string}"
+     image_tag = "https://maps.googleapis.com/maps/api/directions/json?#{query_string}"
  end
 
  def access_hash
