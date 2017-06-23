@@ -13,20 +13,14 @@ class ExperienceSignupsController < ApplicationController
   end
 
   def create
-    @experience_signup = ExperienceSignup.new(exp_signup_params)
-    @experience_signup.user_id = current_user.id
-
+    @experience_signup = ExperienceSignup.new(experience_id: params[:experience_id], user_id: current_user.id)
     if @experience_signup.save
-      redirect_to experience_path(@experience_signup.experience)
+      flash[:success] = "You have successfully signed up to go to #{@experience_signup.experience.restaurant.name}!"
+      redirect_to user_path(@experience_signup.user)
     else
-      render 'new'
+      flash[:danger] = "There was an error with your registration!"
+      render '../experience/show'
     end
   end
-
-
-  private
-    def exp_signup_params
-      params.require(:experience_signup).permit(:experience_id)
-    end
 
 end
