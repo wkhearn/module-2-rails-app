@@ -2,7 +2,9 @@
 
 <h5> Name: <%= @user.name.titleize %></h5>
 <h5> Username: <%= @user.username %></h5>
-
+<% if @user.profile_pic_file_name %>
+  <%= image_tag @user.profile_pic.url(:medium) %>
+<% end %>
 
 
 <% if @user.instructor == true  %>
