@@ -78,11 +78,35 @@
 </div>
 <br>
 
+
+<u><h3>Recent Reviews</h3></u>
+<div class="">
+  <div class="row">
+    <% Review.most_recent_reviews.each do |review| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to(image_tag(review.restaurant.image.url(:thumb)), user_path(review.user)) %>
+        <div class="caption">
+          <ul>
+            <li>User: <%= link_to "#{review.user.name}", user_path(review.user) %></li>
+            <li>Restaurant: <%= link_to "#{review.restaurant.name}", restaurant_path(review.restaurant) %></li>
+            <li>Rating: <%= review.rating %> stars</li>
+            <li>Wait Time: <%= review.wait %> minutes</li>
+            <li>Comments: <%= review.content %></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
+
 <u><h3>Users</h3></u>
 <div class="">
   <div class="row">
     <div class="col-sm-6 col-md-4">
-      <table class = "table table-condensed table-hover">
+      <table class = "table table-bordered table-condensed table-hover">
           <h4>Most Active Reviewers</h4>
           <tr>
             <th>User</th>
@@ -97,7 +121,7 @@
       </table>
     </div>
     <div class="col-sm-6 col-md-4">
-      <table class = "table table-condensed table-hover">
+      <table class = "table table-bordered table-responsive table-condensed table-hover">
         <h4>Happiest Reviewers</h4>
           <tr>
             <th>User</th>
@@ -114,7 +138,7 @@
       </table>
     </div>
     <div class="col-sm-6 col-md-4">
-      <table class = "table table-condensed table-hover">
+      <table class = "table table-bordered table-responsive table-condensed table-hover">
         <h4>Snobbiest Reviewers</h4>
           <tr>
             <th>User</th>
@@ -133,17 +157,3 @@
   </div>
 </div>
 <br>
-
-
-<u><h3>Reviews</h3></u>
-<h4>Most Recent Reviews</h4>
-
-<% Review.most_recent_reviews.each do |rev| %>
-<ul>
-<li> <%= link_to "#{rev.user.name}", user_path(rev.user) %> reviewed <%= link_to "#{rev.restaurant.name}", restaurant_path(rev.restaurant) %>!</li>
-<ul>
-<li><%= link_to "Rating: #{rev.rating} Stars", review_path(rev) %></li>
-<li><%= link_to "Wait: #{rev.wait} minute wait", review_path(rev) %></li>
-<li><%= link_to "Comments: #{rev.content}", review_path(rev) %> </li>
-</ul></ul>
-<% end %>
