@@ -58,6 +58,9 @@ ________________________________________________________________________________
 <br><br>
 <% end  %>
 
+
+<% if current_user.id == params[:id] %>
 <p><%= link_to("Edit Profile", edit_user_path) %></p>
+<% end  %>
 
 <%= link_to "Dashboard" , root_path %>
