@@ -79,28 +79,60 @@
 <br>
 
 <u><h3>Users</h3></u>
-<h4>Most Active Reviewers</h4>
-<ul>
-  <% User.most_active.each do |user| %>
-  <li><%= link_to "#{user.name} - #{user.reviews.length} reviews", user_path(user) %></li>
-  <% end %>
-</ul>
+<div class="">
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <table class = "table table-condensed table-hover">
+          <h4>Most Active Reviewers</h4>
+          <tr>
+            <th>User</th>
+            <th>Reviews</th>
+          </tr>
+          <% User.most_active.each do |user| %>
+          <tr>
+            <td> <%= link_to "#{user.name}", user_path(user) %> </td>
+            <td> <%= user.reviews.length %> </td>
+          </tr>
+      <% end %>
+      </table>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <table class = "table table-condensed table-hover">
+        <h4>Happiest Reviewers</h4>
+          <tr>
+            <th>User</th>
+            <th>Reviews</th>
+            <th>Avg. Rating</th>
+          </tr>
+          <% User.happiest_reviewer.each do |user| %>
+          <tr>
+            <td> <%= link_to "#{user.name}", user_path(user) %> </td>
+            <td> <%= user.reviews.length %> </td>
+            <td> <%= user.average_rating %> </td>
+          </tr>
+      <% end %>
+      </table>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <table class = "table table-condensed table-hover">
+        <h4>Snobbiest Reviewers</h4>
+          <tr>
+            <th>User</th>
+            <th>Reviews</th>
+            <th>Avg. Rating</th>
+          </tr>
+          <% User.snobiest_reviewer.each do |user| %>
+          <tr>
+            <td> <%= link_to "#{user.name}", user_path(user) %> </td>
+            <td> <%= user.reviews.length %> </td>
+            <td> <%= user.average_rating %> </td>
+          </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 <br>
-<h4>Happiest Reviewers</h4>
-<ul>
-  <% User.happiest_reviewer.each do |user| %>
-  <li><%= link_to "#{user.name} - #{user.average_rating} stars", user_path(user) %></li>
-  <% end %>
-</ul>
-<br>
-<h4>Food Snob Leaderboard</h4>
-<ul>
-  <% User.snobiest_reviewer.each do |user| %>
-  <li><%= link_to "#{user.name} - #{user.average_rating} stars", user_path(user) %></li>
-  <% end %>
-</ul>
-<br>
-
 
 
 <u><h3>Reviews</h3></u>

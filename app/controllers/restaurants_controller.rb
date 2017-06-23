@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       @restaurant.address = @restaurant.hash_address
       @restaurant.save
-      flash[:success] = "#{@restaurant.name} has been added!"
+      flash[:success] = "#{@restaurant.name} has been added! If you'd like to leave a review, click 'Create Review!'"
       redirect_to restaurants_path
     else
       render 'new'
