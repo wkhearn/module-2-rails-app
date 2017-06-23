@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_attached_file :profile_pic, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/profile_pics/missing.jpg"
+  has_attached_file :profile_pic, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/assets/:style/missing_profile.jpg"
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\z/
 
 
