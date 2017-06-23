@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticated, only: [:show]
 
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -28,6 +29,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if current_user.id == params[:id]
+
+    else
+      flash[:danger] = "You cannot edit other people's profiles!"
+      redirect_to user_path(@user)
+    end
   end
 
   def update
