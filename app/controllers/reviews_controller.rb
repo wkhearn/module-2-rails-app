@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
 
     if @review.save
+      flash[:success] = "Thanks for adding a review for #{@review.restaurant.name}"
       redirect_to restaurant_path(@review.restaurant)
     else
       render 'new'
