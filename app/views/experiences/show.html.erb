@@ -1,8 +1,17 @@
-<h1><%= @experience.restaurant.name %></h1>
+<h1>Experience: <%= @experience.restaurant.name %> on <%= @experience.date.strftime("%B %d, %Y") %> at 12pm</h1>
 
-<p><%= @experience.date.strftime("%B %d, %Y") %></p>
+<br>
 
-<%= link_to("Signup!", experience_signups_path(experience_id: @experience.id), method: :post)%><br>
+<h4>Current Attendees</h4>
+
+<%  @experience.users.each do |user| %>
+<li><%= user.name %></li>
+<% end %>
+
+
+<br><br><br>
+<p><a href="<%= experience_signups_path(experience_id: @experience.id) %>" data-method="post" class="btn btn-info" role="button">Sign Up!</a></p>
+
 
 <%= link_to("Did you attend? Write a review!", new_review_path) %><br>
 

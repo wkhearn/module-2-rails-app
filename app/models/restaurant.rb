@@ -59,6 +59,7 @@ class Restaurant < ApplicationRecord
   end
 
   def total_turnaround
+    
     minutes * 2 + self.average_wait.to_i
   end
 
