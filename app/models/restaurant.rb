@@ -2,7 +2,7 @@ class Restaurant < ApplicationRecord
   has_many :reviews
   has_many :experiences
   has_many :users, through: :reviews
-  has_attached_file :image, styles: { large: "500x500#", medium: "400x400#", thumb: "319x200" }, default_url: "/images/:style/missing.png"
+  has_attached_file :image, styles: { large: "500x500#", medium: "400x400#", thumb: "319x200#" }, default_url: "/assets/:style/missing_restaurant.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   geocoded_by :search_address
@@ -61,7 +61,7 @@ class Restaurant < ApplicationRecord
   end
 
   def total_turnaround
-    
+
     minutes * 2 + self.average_wait.to_i
   end
 

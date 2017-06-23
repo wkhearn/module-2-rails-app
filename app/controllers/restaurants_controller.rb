@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
 
   def new
-    @restaurant = Restaurant.order("#{sort_column} #{sort_direction}")
+    @restaurant = Restaurant.new
   end
 
   def create
